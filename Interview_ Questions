@@ -1,0 +1,61 @@
+1. How does the KNN algorithm work?
+KNN (K-Nearest Neighbors) is a lazy, instance-based algorithm:
+It stores all training data.
+For a new input, it calculates the distance to all training points.
+It selects the K closest (neighbors) and uses majority voting to classify.
+we used this on the Iris dataset to predict flower species.
+
+2. How do you choose the right K?
+Try multiple values (e.g., K = 1 to 10)
+Evaluate model accuracy on validation/test set
+Pick the K with highest performance without overfitting
+In our project, you plotted accuracy for K from 1 to 10 and selected the best.
+
+3. Why is normalization important in KNN?
+Because KNN uses distance calculations, and unscaled features can dominate.
+📌 For example:
+Petal length in cm (0–7)
+Sepal width in mm (0–1000)
+Without normalization, the feature with a larger scale will bias distance computation.
+You used StandardScaler to standardize features — smart move!
+
+4. What is the time complexity of KNN?
+For prediction, it’s:
+O(n × d) where:
+n = number of training samples
+d = number of features
+ This means KNN is slow at prediction time, especially on large datasets.
+
+5. What are the pros and cons of KNN?
+Pros:
+Simple and easy to implement
+No training time (lazy learning)
+Works well on small datasets
+
+Cons:
+
+Slow on large datasets
+Sensitive to irrelevant features
+Doesn’t handle missing values well
+
+6. Is KNN sensitive to noise?
+Yes. Noisy data (like outliers or mislabeled points) can badly affect prediction because KNN makes decisions based on the nearest neighbors, even if they’re wrong.
+You can reduce this by:
+Choosing a higher K
+Cleaning your data
+Using weighted KNN
+
+7. How does KNN handle multi-class problems?
+KNN naturally handles multi-class classification by:
+Counting the labels among the K neighbors
+Choosing the most frequent class
+In our Iris dataset, you classified 3 classes: Setosa, Versicolor, Virginica — and KNN handled it perfectly.
+
+8. What’s the role of distance metrics in KNN?
+Distance metrics decide how “closeness” is calculated between data points.
+Common metrics:
+Euclidean (default) → straight-line distance
+Manhattan → sum of absolute differences
+Minkowski → general form
+Cosine → angle-based distance for text/vector data
+We likely used Euclidean in your model
